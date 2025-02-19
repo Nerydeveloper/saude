@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "paciente": {
+      "nome": "David",
+      "CPF": "131.456.798-29",
+      "idade": 24,
+      "telefone": "414578",
+      "históricoMedicoBasico": [
+        "Sem registros"
+      ]
+    },
+    "medico": {
+      "crm": "123456-pe",
+      "disponibilidade": [
+        "Terça"
+      ],
+      "especialidade": "Fonodiologo",
+      "id": "ff022783-11b7-4f13-8dc1-622fb31d90b2",
+      "nome": "Darllan",
+      "email": "darllandaram@gmail.com",
+      "senha": "1878641654",
+      "tipo": "MEDICO"
+    },
+    "motivoConsulta": "To doente",
+    "horarioConsulta": "não tem historico",
+    "status": true
+  }
+]

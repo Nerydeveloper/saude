@@ -1,0 +1,16 @@
+[
+  {
+    "crm": "13456-pe",
+    "disponibilidade": [
+      "Terça",
+      "Quinta",
+      "Quinta"
+    ],
+    "especialidade": "Nova especialidade",
+    "id": "ae5e23ef-aa3f-4249-b8d2-a0f5ed48ccaa",
+    "nome": "Darllan",
+    "email": "darllandaram@gmail.com",
+    "senha": "1878641654",
+    "tipo": "MEDICO"
+  }
+]
