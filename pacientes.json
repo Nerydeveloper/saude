@@ -79,5 +79,14 @@
     "históricoMedicoBasico": [
       "primeira consulta"
     ]
+  },
+  {
+    "nome": "calango",
+    "CPF": "12345678901",
+    "idade": 67,
+    "telefone": "(87)99192-9394",
+    "históricoMedicoBasico": [
+      "com ahiv"
+    ]
   }
 ]

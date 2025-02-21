@@ -62,6 +62,11 @@ public class Main extends javax.swing.JFrame {
         jButtonEntrarComoMedico.setBackground(new java.awt.Color(0, 204, 204));
         jButtonEntrarComoMedico.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEntrarComoMedico.setText("ENTRAR COMO MEDICO");
+        jButtonEntrarComoMedico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEntrarComoMedicoMouseClicked(evt);
+            }
+        });
 
         jButtonEntrarComoAdministrador.setText("ENTRAR COMO ADMINISTRADOR");
         jButtonEntrarComoAdministrador.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,6 +153,13 @@ public class Main extends javax.swing.JFrame {
        
         
     }//GEN-LAST:event_jButtonEntrarComoAdministradorMouseClicked
+
+    private void jButtonEntrarComoMedicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEntrarComoMedicoMouseClicked
+        // TODO add your handling code here:
+        LoginMedico medico = new LoginMedico();
+        medico.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonEntrarComoMedicoMouseClicked
 
     /**
      * @param args the command line arguments
