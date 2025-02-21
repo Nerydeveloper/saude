@@ -73,9 +73,9 @@
                           <EmptySpace min="-2" pref="298" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField1" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                              <Component id="jTextFieldInputCRM" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField2" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                              <Component id="jTextFieldInputSenha" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                               <Component id="jButtonEntrarComoMedico" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -101,11 +101,11 @@
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="jTextFieldInputCRM" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jTextField2" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="jTextFieldInputSenha" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                   <Component id="jButtonEntrarComoMedico" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
@@ -124,9 +124,9 @@
             <Property name="text" type="java.lang.String" value="SENHA"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="jTextFieldInputCRM">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="jTextFieldInputSenha">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -154,6 +154,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="ENTRAR"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonEntrarComoMedicoMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

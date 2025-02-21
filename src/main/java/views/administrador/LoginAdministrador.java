@@ -1,7 +1,9 @@
 package views.administrador;
 
 import com.mycompany.controllers.AdministradorController;
+import com.mycompany.models.AdministradorModel;
 import com.mycompany.saude.*;
+import com.mycompany.util.SessaoUsuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -150,20 +152,24 @@ public class LoginAdministrador extends javax.swing.JFrame {
         AdministradorController adminController = new AdministradorController();
         String email = jTextFieldEmailAdmin.getText();
         String senha = jTextFieldPasswordAdmin.getText();
-        String idEmail = adminController.buscarPeloEmail(email).getId();
-        System.out.println("Dados do existeEmail: " + idEmail);
-        if (adminController.isAdmin(idEmail)) {
-            if (adminController.buscarPeloEmail(email).getSenha().equals(senha)) {
-                
+
+        AdministradorModel usuario = adminController.buscarPeloEmail(email);
+
+        if (usuario != null && usuario.getSenha().equals(senha)) {
+            if (adminController.isAdmin(usuario.getId())) {
+
+                // Salva os dados do usuário na sessão
+                SessaoUsuario.setUsuario(usuario);
+
                 this.dispose();
 
                 JanelaConsultas janelaConsultas = new JanelaConsultas();
                 janelaConsultas.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Senha incorreta");
+                JOptionPane.showMessageDialog(rootPane, "Você não tem permissão de administrador");
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Credenciais invalidas");
+            JOptionPane.showMessageDialog(rootPane, "Credenciais inválidas");
         }
 
     }//GEN-LAST:event_jButtoneEntrarAdminMouseClicked

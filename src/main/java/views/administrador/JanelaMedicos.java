@@ -6,7 +6,9 @@ package views.administrador;
 
 import com.mycompany.controllers.AdministradorController;
 import com.mycompany.controllers.MedicoController;
+import com.mycompany.models.AdministradorModel;
 import com.mycompany.models.MedicoModel;
+import com.mycompany.util.SessaoUsuario;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class JanelaMedicos extends javax.swing.JFrame {
     private String crmMedico;
+    AdministradorModel usuario = SessaoUsuario.getUsuario();
     /**
      * Creates new form DashboardAdministrador
      */
@@ -365,7 +368,7 @@ public class JanelaMedicos extends javax.swing.JFrame {
         MedicoController medicoController = new MedicoController();
         MedicoModel medico = new MedicoModel(nome, email, senha, crm, horariosList, especialidadeSelecionada);
 
-        medicoController.cadastrarMedico(medico,adminController.buscarPeloEmail("JoedsonAdmin@gmail.com").getId());
+        medicoController.cadastrarMedico(medico,usuario.getId());
 
     }//GEN-LAST:event_jButtonCadastrarMedicoMouseClicked
 
@@ -426,7 +429,7 @@ public class JanelaMedicos extends javax.swing.JFrame {
     private void Display() {
         AdministradorController adminController = new AdministradorController();
         MedicoController medicoController = new MedicoController();
-        List<MedicoModel> medicos = medicoController.listarMedicos(adminController.buscarPeloEmail("JoedsonAdmin@gmail.com").getId());
+        List<MedicoModel> medicos = medicoController.listarMedicos(usuario.getId());
 
         // Limpa a tabela antes de adicionar novos dados
         DefaultTableModel model = (DefaultTableModel) jTableMedicos.getModel();

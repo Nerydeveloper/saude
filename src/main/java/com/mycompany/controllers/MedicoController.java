@@ -60,8 +60,8 @@ public class MedicoController {
                 // Se a lista de disponibilidade não for nula, adiciona os novos valores
                 if (novaDisponibilidade != null && !novaDisponibilidade.isEmpty()) {
                     medico.getDisponibilidade().addAll(novaDisponibilidade);
-                } 
-                
+                }
+
                 salvarDados();
                 System.out.println("✅ Médico atualizado com sucesso!");
                 return;
@@ -75,7 +75,7 @@ public class MedicoController {
         if (!adminController.isAdmin(idUser)) {
             System.out.println("❌ ERRO: Apenas administradores podem remover médicos!");
             return;
-        } 
+        }
         medicos.removeIf(a -> a.getCrm().equals(crm));
         salvarDados();
         System.out.println("Medico removido!");
@@ -89,6 +89,12 @@ public class MedicoController {
 
     }
 
+    public MedicoModel buscarMedicoPorCRM(String crm) {
+
+        return medicos.stream().filter(a -> a.getCrm().equals(crm)).findFirst().orElse(null);
+
+    }
+
     public List<MedicoModel> listarMedicos(String idUser) {
         if (adminController.isAdmin(idUser)) {
             System.out.println("Medico: " + medicos.toString());
@@ -97,5 +103,4 @@ public class MedicoController {
         return null;
     }
 
-    
 }

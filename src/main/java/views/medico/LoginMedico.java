@@ -1,8 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package views.medico;
+
+import com.mycompany.controllers.AdministradorController;
+import com.mycompany.controllers.MedicoController;
+import com.mycompany.models.AdministradorModel;
+import com.mycompany.models.MedicoModel;
+import com.mycompany.util.SessaoUsuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,8 +33,8 @@ public class LoginMedico extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldInputCRM = new javax.swing.JTextField();
+        jTextFieldInputSenha = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButtonEntrarComoMedico = new javax.swing.JButton();
@@ -64,6 +67,11 @@ public class LoginMedico extends javax.swing.JFrame {
         jButtonEntrarComoMedico.setBackground(new java.awt.Color(0, 204, 204));
         jButtonEntrarComoMedico.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEntrarComoMedico.setText("ENTRAR");
+        jButtonEntrarComoMedico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEntrarComoMedicoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -75,9 +83,9 @@ public class LoginMedico extends javax.swing.JFrame {
                         .addGap(298, 298, 298)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldInputCRM, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldInputSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonEntrarComoMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(312, 312, 312)
@@ -96,11 +104,11 @@ public class LoginMedico extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldInputCRM, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldInputSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
                 .addComponent(jButtonEntrarComoMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
@@ -127,6 +135,41 @@ public class LoginMedico extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonEntrarComoMedicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEntrarComoMedicoMouseClicked
+        // TODO add your handling code here:
+        // Instancia o controlador do médico
+        MedicoController medicoController = new MedicoController();
+
+        // Obtém os valores inseridos nos campos
+        String crm = jTextFieldInputCRM.getText();
+        String senha = jTextFieldInputSenha.getText();
+
+        // Verifica se os campos estão preenchidos
+        if (crm.isEmpty() || senha.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha todos os campos.");
+            return;
+        }
+
+        // Busca o usuário pelo CRM
+        MedicoModel usuario = medicoController.buscarMedicoPorCRM(crm);
+
+        // Verifica se o usuário existe e se a senha está correta
+        if (usuario != null && usuario.getSenha().equals(senha)) {
+            // Salva o usuário na sessão
+            SessaoUsuario.setUsuario(usuario);
+
+            // Fecha a janela atual
+            this.dispose();
+
+            // Abre a tela de consultas
+            VerConsultas janelaConsultas = new VerConsultas();
+            janelaConsultas.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "CRM ou senha inválidos.");
+        }
+
+    }//GEN-LAST:event_jButtonEntrarComoMedicoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -171,7 +214,7 @@ public class LoginMedico extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextFieldInputCRM;
+    private javax.swing.JTextField jTextFieldInputSenha;
     // End of variables declaration//GEN-END:variables
 }

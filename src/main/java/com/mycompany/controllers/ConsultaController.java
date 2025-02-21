@@ -39,7 +39,7 @@ public class ConsultaController {
                     .anyMatch(a -> a.getHorarioConsulta().equals(consulta.getHorarioConsulta()) && a.getStatus());
 
             if (horarioOcupado) {
-                System.out.println("ERRO: Já existe uma consulta mascada para esse horário");
+                System.out.println("ERRO: Já existe uma consulta marcada para esse horário");
                 return;
             }
 

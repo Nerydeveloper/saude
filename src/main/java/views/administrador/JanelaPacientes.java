@@ -2,7 +2,9 @@ package views.administrador;
 
 import com.mycompany.controllers.AdministradorController;
 import com.mycompany.controllers.PacienteController;
+import com.mycompany.models.AdministradorModel;
 import com.mycompany.models.PacienteModel;
+import com.mycompany.util.SessaoUsuario;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -17,6 +19,8 @@ import javax.swing.table.DefaultTableModel;
 public class JanelaPacientes extends javax.swing.JFrame {
 
     private String cpfPaciente;
+    
+    AdministradorModel usuario = SessaoUsuario.getUsuario();
 
     /**
      * Creates new form DashboardAdministrador
@@ -320,7 +324,7 @@ public class JanelaPacientes extends javax.swing.JFrame {
         PacienteController pacienteController = new PacienteController();
 
         PacienteModel paciente = new PacienteModel(nome, cpf, idade, telefone, listaHistoricoMedico);
-        pacienteController.cadastrarPaciente(paciente, controllerAdmin.buscarPeloEmail("JoedsonAdmin@gmail.com").getId());
+        pacienteController.cadastrarPaciente(paciente, usuario.getId());
 
     }//GEN-LAST:event_jButtonCadastrarPacientesMouseClicked
 
@@ -329,13 +333,13 @@ public class JanelaPacientes extends javax.swing.JFrame {
         AdministradorController controllerAdmin = new AdministradorController();
         PacienteController pacienteController = new PacienteController();
         
-        pacienteController.removerPaciente(cpfPaciente, controllerAdmin.buscarPeloEmail("JoedsonAdmin@gmail.com").getId());
+        pacienteController.removerPaciente(cpfPaciente, usuario.getId());
     }//GEN-LAST:event_jButtonExcluirPacientesMouseClicked
 
     private void Display() {
         AdministradorController administradorController = new AdministradorController();
         PacienteController pacienteController = new PacienteController();
-        List<PacienteModel> pacientes = pacienteController.listarPacientes(administradorController.buscarPeloEmail("JoedsonAdmin@gmail.com").getId());
+        List<PacienteModel> pacientes = pacienteController.listarPacientes(usuario.getId());
 
         // Limpa a tabela antes de adicionar novos dados
         DefaultTableModel model = (DefaultTableModel) jTablePacientes.getModel();

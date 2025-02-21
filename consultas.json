@@ -56,5 +56,61 @@
     "motivoConsulta": "Dente pode",
     "horarioConsulta": "Sexta",
     "status": true
+  },
+  {
+    "id": "609b5ad1-58af-4650-8a4d-00ff40531cfe",
+    "paciente": {
+      "nome": "David",
+      "CPF": "131.456.79-29",
+      "idade": 24,
+      "telefone": "414578",
+      "históricoMedicoBasico": [
+        "Sem registros"
+      ]
+    },
+    "medico": {
+      "crm": "34534534-pe",
+      "disponibilidade": [
+        "Segunda"
+      ],
+      "especialidade": "Ortopedia",
+      "id": "f84fc609-00cf-438f-995d-ad0e4fda11b8",
+      "nome": "Pararanum",
+      "email": "fsdbnuhr@gmail.com",
+      "senha": "198479465465",
+      "tipo": "MEDICO"
+    },
+    "motivoConsulta": "fgfdgdfgdgfdg",
+    "horarioConsulta": "Segunda",
+    "status": true
+  },
+  {
+    "id": "50190adb-63b8-43fb-abc4-8d07300b6f4b",
+    "paciente": {
+      "nome": "David",
+      "CPF": "131.456.789-2",
+      "idade": 24,
+      "telefone": "414578",
+      "históricoMedicoBasico": [
+        "Sem registros"
+      ]
+    },
+    "medico": {
+      "crm": "13456-pe",
+      "disponibilidade": [
+        "Terça",
+        "Quarta",
+        "Quinta"
+      ],
+      "especialidade": "Ginecologista",
+      "id": "ae5e23ef-aa3f-4249-b8d2-a0f5ed48ccba",
+      "nome": "Yure",
+      "email": "yure@gmail.com",
+      "senha": "1878641654",
+      "tipo": "MEDICO"
+    },
+    "motivoConsulta": "Teste do contextUser",
+    "horarioConsulta": "Quinta",
+    "status": true
   }
 ]
