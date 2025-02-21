@@ -3,14 +3,26 @@
     "crm": "13456-pe",
     "disponibilidade": [
       "Terça",
-      "Quinta",
+      "Quarta",
       "Quinta"
     ],
-    "especialidade": "Nova especialidade",
-    "id": "ae5e23ef-aa3f-4249-b8d2-a0f5ed48ccaa",
-    "nome": "Darllan",
-    "email": "darllandaram@gmail.com",
+    "especialidade": "Ginecologista",
+    "id": "ae5e23ef-aa3f-4249-b8d2-a0f5ed48ccba",
+    "nome": "Yure",
+    "email": "yure@gmail.com",
     "senha": "1878641654",
+    "tipo": "MEDICO"
+  },
+  {
+    "crm": "34534534-pe",
+    "disponibilidade": [
+      "Segunda"
+    ],
+    "especialidade": "Ortopedia",
+    "id": "f84fc609-00cf-438f-995d-ad0e4fda11b8",
+    "nome": "Pararanum",
+    "email": "fsdbnuhr@gmail.com",
+    "senha": "198479465465",
     "tipo": "MEDICO"
   }
 ]

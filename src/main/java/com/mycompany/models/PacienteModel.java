@@ -7,7 +7,8 @@ import java.util.List;
  *
  * @author adria
  */
-public class PacienteModel implements Serializable{
+public class PacienteModel implements Serializable {
+
     private String nome;
     private String CPF; // (com validação)
     private int idade;
@@ -61,6 +62,10 @@ public class PacienteModel implements Serializable{
     public void setHistóricoMedicoBasico(List<String> históricoMedicoBasico) {
         this.históricoMedicoBasico = históricoMedicoBasico;
     }
-      
-    
+
+    @Override
+    public String toString() {
+        return this.nome; // Supondo que "nome" seja o atributo correto
+    }
+
 }

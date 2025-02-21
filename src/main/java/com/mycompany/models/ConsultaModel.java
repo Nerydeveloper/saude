@@ -1,15 +1,12 @@
 package com.mycompany.models;
 
 import java.io.Serializable;
+import java.util.UUID;
 
-/**
- *
- * @author adria
- */
+
 public class ConsultaModel implements Serializable {
 
-    private static int contadorId = 1;
-    private String id;
+    private UUID id;
     private PacienteModel paciente;
     private MedicoModel medico;
     private String motivoConsulta;
@@ -17,14 +14,14 @@ public class ConsultaModel implements Serializable {
     private boolean status = true;
 
     public ConsultaModel(PacienteModel paciente, MedicoModel medico, String motivoConsulta, String horarioConsulta) {
-        this.id = String.valueOf(contadorId++);
+        this.id = UUID.randomUUID(); // Gera um UUID único
         this.paciente = paciente;
         this.medico = medico;
         this.motivoConsulta = motivoConsulta;
         this.horarioConsulta = horarioConsulta;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -56,13 +53,13 @@ public class ConsultaModel implements Serializable {
         this.horarioConsulta = horarioConsulta;
     }
 
-    public static int getContadorId() {
-        return contadorId;
-    }
-
-    public static void setContadorId(int contadorId) {
-        ConsultaModel.contadorId = contadorId;
-    }
+//    public static int getContadorId() {
+//        return contadorId;
+//    }
+//
+//    public static void setContadorId(int contadorId) {
+//        ConsultaModel.contadorId = contadorId;
+//    }
 
     public String getMotivoConsulta() {
         return motivoConsulta;

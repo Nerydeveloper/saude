@@ -2,17 +2,13 @@ package com.mycompany.models;
 
 import java.util.List;
 
-/**
- *
- * @author adria
- */
 public class MedicoModel extends UsuarioModel {
 
     private String crm;
     private List<String> disponibilidade;
     private String especialidade;
 
-    public MedicoModel(String crm, List<String> disponibilidade, String especialidade, String nome, String email, String senha) {
+    public MedicoModel(String nome, String email, String senha,String crm, List<String> disponibilidade, String especialidade ) {
         super(nome, email, senha, TipoUsuario.MEDICO);
         this.crm = crm;
         this.disponibilidade = disponibilidade;
@@ -43,14 +39,9 @@ public class MedicoModel extends UsuarioModel {
         this.especialidade = especialidade;
     }
 
-    @Override
+   @Override
     public String toString() {
-        return "Médico{"
-                + "CRM='" + crm + '\''
-                + ", Nome='" + super.getNome() + '\''
-                + ", Especialidade='" + especialidade + '\''
-                + ", Disponibilidade=" + disponibilidade
-                + '}';
+        return this.getNome(); // Supondo que "nome" seja o atributo correto
     }
 
 }

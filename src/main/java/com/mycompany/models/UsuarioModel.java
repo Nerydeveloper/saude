@@ -7,10 +7,7 @@ package com.mycompany.models;
 import java.io.Serializable;
 import java.util.UUID;
 
-/**
- *
- * @author adria
- */
+
 public class UsuarioModel implements Serializable {
 
     public enum TipoUsuario {

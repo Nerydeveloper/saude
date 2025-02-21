@@ -6,6 +6,7 @@ import com.mycompany.models.MedicoModel;
 import com.mycompany.models.PacienteModel;
 import com.mycompany.persistence.JSONManager;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -53,8 +54,8 @@ public class ConsultaController {
 
     }
 
-    public void atualizarConsulta(String idUser, String idConsulta, String motivoConsulta, String horarioConsulta, boolean status) {
-        if (!adminController.isAdmin(idUser)) {
+    public void atualizarConsulta(String idUserAdmin, UUID idConsulta, String motivoConsulta, String horarioConsulta, boolean status) {
+        if (!adminController.isAdmin(idUserAdmin)) {
             System.out.println("❌ ERRO: Apenas administradores podem atualizar consultas!");
             return;
         }
@@ -80,13 +81,49 @@ public class ConsultaController {
         System.out.println("ERRO: Consulta não encontrada");
 
     }
+//
+//    public void removerConsulta(String idUser, String idConsulta) {
+//        if (!adminController.isAdmin(idUser)) {
+//            System.out.println("❌ ERRO: Apenas administradores podem remover consultas!");
+//            return;
+//        }
+//        consultas.removeIf(a -> a.getId().equals(idConsulta));
+//        salvarDados();
+//    }
 
-    public void removerConsulta(String idUser, String idConsulta) {
+//    public void removerConsulta(String idUser, UUID idConsulta) {
+//        if (!adminController.isAdmin(idUser)) {
+//            System.out.println("❌ ERRO: Apenas administradores podem remover consultas!");
+//            return;
+//        }
+//
+//        boolean removed = consultas.removeIf(a -> a.getId().equals(idConsulta));
+//        if (removed) {
+//            System.out.println("✅ Consulta removida com sucesso!");
+//        } else {
+//            System.out.println("⚠️ Nenhuma consulta encontrada com o ID: " + idConsulta);
+//        }
+//
+//        salvarDados();
+//    }
+    public void removerConsulta(String idUser, UUID idConsulta) {
         if (!adminController.isAdmin(idUser)) {
             System.out.println("❌ ERRO: Apenas administradores podem remover consultas!");
             return;
         }
-        consultas.removeIf(a -> a.getId().equals(idConsulta));
+
+        boolean removed = consultas.removeIf(a -> a.getId().equals(idConsulta));
+        if (removed) {
+            System.out.println("✅ Consulta removida com sucesso!");
+        } else {
+            System.out.println("⚠️ Nenhuma consulta encontrada com o ID: " + idConsulta);
+            // Imprimir todas as consultas para depuração
+            System.out.println("Consultas disponíveis:");
+            for (ConsultaModel consulta : consultas) {
+                System.out.println(consulta.getId());
+            }
+        }
+
         salvarDados();
     }
 

@@ -1,24 +1,6 @@
 [
   {
-    "nome": "Lucas",
-    "CPF": "123415",
-    "idade": 24,
-    "telefone": "414578",
-    "históricoMedicoBasico": [
-      "Sem registros"
-    ]
-  },
-  {
-    "nome": "Lucas",
-    "CPF": "12347615",
-    "idade": 24,
-    "telefone": "414578",
-    "históricoMedicoBasico": [
-      "Sem registros"
-    ]
-  },
-  {
-    "nome": "Lucas",
+    "nome": "Anna",
     "CPF": "123.456.789-32",
     "idade": 24,
     "telefone": "414578",
@@ -27,7 +9,7 @@
     ]
   },
   {
-    "nome": "pEDRO",
+    "nome": "Wendy",
     "CPF": "121.456.789-32",
     "idade": 24,
     "telefone": "414578",
@@ -78,6 +60,24 @@
     "telefone": "414578",
     "históricoMedicoBasico": [
       "Sem registros"
+    ]
+  },
+  {
+    "nome": "gdfgdfgdf",
+    "CPF": "12387694531",
+    "idade": 43,
+    "telefone": "3456346456457",
+    "históricoMedicoBasico": [
+      "primeira consulta"
+    ]
+  },
+  {
+    "nome": "gdfgdfgdf",
+    "CPF": "12387694531",
+    "idade": 43,
+    "telefone": "3456346456457",
+    "históricoMedicoBasico": [
+      "primeira consulta"
     ]
   }
 ]
