@@ -4,22 +4,27 @@
  */
 package views.medico;
 
+import com.mycompany.controllers.ConsultaController;
+import com.mycompany.models.ConsultaModel;
 import com.mycompany.models.MedicoModel;
 import com.mycompany.util.SessaoUsuario;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author adria
  */
 public class VerConsultas extends javax.swing.JFrame {
+
     MedicoModel usuario = SessaoUsuario.getUsuarioMedico();
-    
-            
+
     /**
      * Creates new form VerConsultas
      */
     public VerConsultas() {
         initComponents();
+        Display();
     }
 
     /**
@@ -36,7 +41,7 @@ public class VerConsultas extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableVerConsultasDoMedico = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,7 +71,7 @@ public class VerConsultas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("SUAS CONSULTAS");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableVerConsultasDoMedico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -77,7 +82,8 @@ public class VerConsultas extends javax.swing.JFrame {
                 "ID", "NOME DO PACIENTE", "DATA", "MOTIVO", "STATUS"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jTableVerConsultasDoMedico.setEnabled(false);
+        jScrollPane1.setViewportView(jTableVerConsultasDoMedico);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -121,6 +127,23 @@ public class VerConsultas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Display() {
+        ConsultaController consultaController = new ConsultaController();
+        DefaultTableModel model = (DefaultTableModel) jTableVerConsultasDoMedico.getModel();
+        model.setRowCount(0);
+        List<ConsultaModel> consultas = consultaController.listarConsultas(usuario.getCrm()); // Carrega a lista de consultas
+        for (ConsultaModel consulta : consultas) {
+            model.addRow(new Object[]{
+                consulta.getId(),
+                consulta.getPaciente().getNome(),
+                consulta.getHorarioConsulta(),
+                consulta.getMotivoConsulta(),
+                consulta.getStatus()
+            });
+        }
+
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -162,6 +185,6 @@ public class VerConsultas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableVerConsultasDoMedico;
     // End of variables declaration//GEN-END:variables
 }

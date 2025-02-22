@@ -23,7 +23,7 @@ public class Saude {
         MedicoController controllerMedico = new MedicoController();
         PacienteController controllerPaciente = new PacienteController();
         ConsultaController controladorConsulta = new ConsultaController();
-        String idUserAdmin = constrolador.buscarPeloEmail("Adrian@gmail.com").getId();
+        //String idUserAdmin = constrolador.buscarPeloEmail("Adrian@gmail.com").getId();
         //AdministradorModel admin01 = new AdministradorModel("Excluir esse", "fgrt5tryty@gmail.com", "Adrian1yhrtyrty23");
         //String idAdmin = constrolador.buscarPeloEmail("fgrt5tryty@gmail.com").getId();
         //constrolador.removerAdmin(idAdmin);
@@ -67,9 +67,9 @@ public class Saude {
         //controladorConsulta.cadastrarConsulta(idUserAdmin, consulta); // Cadastrar
         //controladorConsulta.atualizarConsulta(idUserAdmin, "2", "dor de cabeça", "8 horas", true); // Atualizar
         //controladorConsulta.removerConsulta(idUserAdmin, "2"); // Remover
-        System.out.println("Consultas: " + controladorConsulta.listarConsultas().getFirst().getHorarioConsulta()); // Listar 
-        System.out.println("Consulta pega pelo ID: " +controladorConsulta.pegarConsultaPeloID("1").getHorarioConsulta());
-
+        //System.out.println("Consultas: " + controladorConsulta.listarConsultas().getFirst().getHorarioConsulta()); // Listar 
+        //System.out.println("Consulta pega pelo ID: " +controladorConsulta.pegarConsultaPeloID("1").getHorarioConsulta());
+        System.out.println("Consultas do medico: " + controladorConsulta.listarConsultas("34534534-pe"));
 
     }
 }

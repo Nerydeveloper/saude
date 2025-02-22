@@ -53,14 +53,6 @@ public class ConsultaModel implements Serializable {
         this.horarioConsulta = horarioConsulta;
     }
 
-//    public static int getContadorId() {
-//        return contadorId;
-//    }
-//
-//    public static void setContadorId(int contadorId) {
-//        ConsultaModel.contadorId = contadorId;
-//    }
-
     public String getMotivoConsulta() {
         return motivoConsulta;
     }

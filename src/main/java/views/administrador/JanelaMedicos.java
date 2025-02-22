@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,8 +23,10 @@ import javax.swing.table.DefaultTableModel;
  * @author adria
  */
 public class JanelaMedicos extends javax.swing.JFrame {
+
     private String crmMedico;
     AdministradorModel usuario = SessaoUsuario.getUsuario();
+
     /**
      * Creates new form DashboardAdministrador
      */
@@ -47,8 +50,8 @@ public class JanelaMedicos extends javax.swing.JFrame {
         jButtonPacientes = new javax.swing.JButton();
         jButtonRelatorios = new javax.swing.JButton();
         jPanelExibirConteudos = new javax.swing.JPanel();
-        jButtonCadastrarMedico = new javax.swing.JButton();
         jButtonExcluirMedico = new javax.swing.JButton();
+        jButtonCadastrarMedico = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableMedicos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -127,17 +130,17 @@ public class JanelaMedicos extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButtonCadastrarMedico.setText("CADASTRAR");
-        jButtonCadastrarMedico.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonCadastrarMedicoMouseClicked(evt);
-            }
-        });
-
         jButtonExcluirMedico.setText("EXCLUIR");
         jButtonExcluirMedico.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonExcluirMedicoMouseClicked(evt);
+            }
+        });
+
+        jButtonCadastrarMedico.setText("CADASTRAR");
+        jButtonCadastrarMedico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonCadastrarMedicoMouseClicked(evt);
             }
         });
 
@@ -183,6 +186,11 @@ public class JanelaMedicos extends javax.swing.JFrame {
         jComboBoxListaHorarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Segunda", "Terça", "Quarta", "Quinta","Sexta" }));
 
         jButtonAtualizarMedico.setText("ATUALIZAR");
+        jButtonAtualizarMedico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAtualizarMedicoMouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("MEDICOS CADASTRADOS NO SISTEMA");
@@ -358,7 +366,7 @@ public class JanelaMedicos extends javax.swing.JFrame {
         String senha = jTextFieldSenhaMedico.getText();
         String horarios = jTextAreaVerHorariosSelecionados.getText();
 
-// Divide a String em um array, usando a quebra de linha como delimitador
+        // Divide a String em um array, usando a quebra de linha como delimitador
         String[] horariosArray = horarios.split("\n"); // ou outro delimitador se necessário
         // Converte o array para uma List<String>
         List<String> horariosList = new ArrayList<>(Arrays.asList(horariosArray));
@@ -368,7 +376,8 @@ public class JanelaMedicos extends javax.swing.JFrame {
         MedicoController medicoController = new MedicoController();
         MedicoModel medico = new MedicoModel(nome, email, senha, crm, horariosList, especialidadeSelecionada);
 
-        medicoController.cadastrarMedico(medico,usuario.getId());
+        medicoController.cadastrarMedico(medico, usuario.getId());
+        Display();
 
     }//GEN-LAST:event_jButtonCadastrarMedicoMouseClicked
 
@@ -376,12 +385,10 @@ public class JanelaMedicos extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (crmMedico != null) {
             MedicoController medicoController = new MedicoController();
-            AdministradorController adminController = new AdministradorController();
-            String idAdmin = adminController.buscarPeloEmail("JoedsonAdmin@gmail.com").getId();
 
             System.out.println("Id da consulta: " + crmMedico.toString());
-            medicoController.removerMedico(crmMedico,idAdmin);
-
+            medicoController.removerMedico(crmMedico, usuario.getId());
+            Display();
             // Aqui você pode adicionar lógica para atualizar a interface, como reloading a tabela
             System.out.println("Consulta excluída com sucesso!");
         } else {
@@ -389,6 +396,28 @@ public class JanelaMedicos extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonExcluirMedicoMouseClicked
+
+    private void jButtonAtualizarMedicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtualizarMedicoMouseClicked
+        // TODO add your handling code here:
+        MedicoController medicoController = new MedicoController();
+
+        String crmID = JOptionPane.showInputDialog(null, "Informe o CRM do medico que deseja atualizar:", "Atualizar Medico", JOptionPane.QUESTION_MESSAGE);
+
+        // Se o usuário cancelar ou não digitar nada, sai do método
+        if (crmID == null || crmID.trim().isEmpty()) {
+            return;
+        }
+        String especialidadeSelecionada = (String) jComboBoxEspecialidades.getSelectedItem();
+        String horarios = jTextAreaVerHorariosSelecionados.getText();
+
+        // Divide a String em um array, usando a quebra de linha como delimitador
+        String[] horariosArray = horarios.split("\n"); // ou outro delimitador se necessário
+        // Converte o array para uma List<String>
+        List<String> horariosList = new ArrayList<>(Arrays.asList(horariosArray));
+
+        medicoController.atualizarMedico(usuario.getId(), crmID, especialidadeSelecionada, horariosList);
+        Display();
+    }//GEN-LAST:event_jButtonAtualizarMedicoMouseClicked
 
     /**
      * @param args the command line arguments

@@ -314,7 +314,6 @@ public class JanelaConsultas extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         ConsultaController consultaController = new ConsultaController();
-        AdministradorController administradorController = new AdministradorController();
         // Obtendo o paciente selecionado
         PacienteModel pacienteSelecionado = (PacienteModel) jComboBoxPaciente.getSelectedItem();
 
@@ -335,13 +334,21 @@ public class JanelaConsultas extends javax.swing.JFrame {
         }
         consultaController.cadastrarConsulta(usuario.getId(), consulta);
 
+        Display();
+
+        // Limpando os campos após o cadastro
+        jTextAreaMotivoConsulta.setText("");
+        jComboBoxDataHora.setSelectedIndex(0);
+        jComboBoxPaciente.setSelectedIndex(0);
+        jComboBoxMedico.setSelectedIndex(0);
+
     }//GEN-LAST:event_jButtonCadastrarConsultaMouseClicked
 
 
     private void jButtonAtualizarConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtualizarConsultaMouseClicked
 
         // Obtendo o motivo da consulta
-        String motivoConsulta = jTextAreaMotivoConsulta.getText().trim();
+        String motivoConsulta = jTextAreaMotivoConsulta.getText();
         // Obtendo a data e hora selecionada
         String dataHoraSelecionada = (String) jComboBoxDataHora.getSelectedItem();
 
@@ -352,22 +359,12 @@ public class JanelaConsultas extends javax.swing.JFrame {
         }
 
         ConsultaController controllerConsulta = new ConsultaController();
-        AdministradorController controllerAdmin = new AdministradorController();
         System.out.println("Id da consulta selecionada: " + idConsulta);
 
-        try {
-            // Obtendo o ID do administrador
-            String adminId = usuario.getId();
+        // Atualizando a consulta
+        controllerConsulta.atualizarConsulta(usuario.getId(), idConsulta, motivoConsulta, dataHoraSelecionada, true);
+        Display();
 
-            // Atualizando a consulta
-            controllerConsulta.atualizarConsulta(adminId, idConsulta, motivoConsulta, dataHoraSelecionada, rootPaneCheckingEnabled);
-
-            // Feedback de sucesso
-            JOptionPane.showMessageDialog(this, "Consulta atualizada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            // Tratando possíveis exceções
-            JOptionPane.showMessageDialog(this, "Erro ao atualizar consulta: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-        }
 
     }//GEN-LAST:event_jButtonAtualizarConsultaMouseClicked
 
@@ -380,7 +377,7 @@ public class JanelaConsultas extends javax.swing.JFrame {
 
             System.out.println("Id da consulta: " + idConsulta.toString());
             consultaController.removerConsulta(usuario.getId(), idConsulta);
-
+            Display();
             // Aqui você pode adicionar lógica para atualizar a interface, como reloading a tabela
             System.out.println("Consulta excluída com sucesso!");
         } else {
@@ -390,7 +387,6 @@ public class JanelaConsultas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonExcluirConsultaMouseClicked
 
     private void Display() {
-        AdministradorController administradorController = new AdministradorController();
         ConsultaController consultaController = new ConsultaController();
         PacienteController pacienteControler = new PacienteController();
         MedicoController medicoController = new MedicoController();
@@ -425,7 +421,7 @@ public class JanelaConsultas extends javax.swing.JFrame {
             optionsMedico.addElement(medico);
         }
 
-// Adicionando um listener ao jComboBoxMedico
+        // Adicionando um listener ao jComboBoxMedico
         jComboBoxMedico.addActionListener(e -> {
             MedicoModel medicoSelecionado = (MedicoModel) jComboBoxMedico.getSelectedItem();
 

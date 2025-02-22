@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class JanelaPacientes extends javax.swing.JFrame {
 
     private String cpfPaciente;
-    
+
     AdministradorModel usuario = SessaoUsuario.getUsuario();
 
     /**
@@ -176,6 +177,11 @@ public class JanelaPacientes extends javax.swing.JFrame {
         jLabel1.setText("NOME");
 
         jButtonAtualizarPacientes.setText("ATUALIZAR");
+        jButtonAtualizarPacientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAtualizarPacientesMouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("PACIENTES CADASTRADOS NO SISTEMA");
@@ -267,7 +273,7 @@ public class JanelaPacientes extends javax.swing.JFrame {
                         .addComponent(jButtonAtualizarPacientes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonExcluirPacientes)))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -325,6 +331,7 @@ public class JanelaPacientes extends javax.swing.JFrame {
 
         PacienteModel paciente = new PacienteModel(nome, cpf, idade, telefone, listaHistoricoMedico);
         pacienteController.cadastrarPaciente(paciente, usuario.getId());
+        Display();
 
     }//GEN-LAST:event_jButtonCadastrarPacientesMouseClicked
 
@@ -332,9 +339,29 @@ public class JanelaPacientes extends javax.swing.JFrame {
         // TODO add your handling code here:
         AdministradorController controllerAdmin = new AdministradorController();
         PacienteController pacienteController = new PacienteController();
-        
+
         pacienteController.removerPaciente(cpfPaciente, usuario.getId());
+        Display();
     }//GEN-LAST:event_jButtonExcluirPacientesMouseClicked
+
+    private void jButtonAtualizarPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtualizarPacientesMouseClicked
+        // TODO add your handling code here:
+        PacienteController pacienteController = new PacienteController();
+        // Solicita o ID do paciente
+        String cpfID = JOptionPane.showInputDialog(null, "Informe o CPF do paciente que deseja atualizar:", "Atualizar Paciente", JOptionPane.QUESTION_MESSAGE);
+
+        // Se o usuário cancelar ou não digitar nada, sai do método
+        if (cpfID == null || cpfID.trim().isEmpty()) {
+            return;
+        }
+        String historicomedico = jTextFieldHistoricoMedico.getText();
+        List<String> listaHistoricoMedico = new ArrayList<>(Arrays.asList(historicomedico.split(","))); // Dividindo por vírgula, altere conforme necessário
+        String idadeString = jTextFieldIdade.getText();
+        int idade = Integer.parseInt(idadeString);
+        pacienteController.atualizarPaciente(usuario.getId(), cpfID, idade, jTextFieldTelefone.getText(), listaHistoricoMedico);
+        Display();
+
+    }//GEN-LAST:event_jButtonAtualizarPacientesMouseClicked
 
     private void Display() {
         AdministradorController administradorController = new AdministradorController();

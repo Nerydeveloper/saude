@@ -56,7 +56,6 @@ public class MedicoController {
         for (MedicoModel medico : medicos) {
             if (medico.getCrm().equals(crm)) {
                 medico.setEspecialidade(novaEspecialidade);
-                medico.setCrm(crm);
                 // Se a lista de disponibilidade não for nula, adiciona os novos valores
                 if (novaDisponibilidade != null && !novaDisponibilidade.isEmpty()) {
                     medico.getDisponibilidade().addAll(novaDisponibilidade);

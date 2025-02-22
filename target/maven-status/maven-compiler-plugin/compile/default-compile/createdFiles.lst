@@ -20,6 +20,7 @@ views\administrador\JanelaConsultas$4.class
 views\administrador\JanelaConsultas$1.class
 views\administrador\JanelaMedicos$3.class
 views\administrador\JanelaPacientes$2.class
+views\administrador\JanelaPacientes$8.class
 views\medico\VerConsultas$1.class
 views\administrador\LoginAdministrador.class
 com\mycompany\saude\Main$1.class

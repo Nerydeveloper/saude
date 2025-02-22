@@ -1,116 +1,57 @@
 [
   {
-    "id": "38ce35d3-bb78-4fc5-b898-0be40d535067",
+    "id": "b6bd336f-108d-4486-8c17-4d6e12e181f4",
     "paciente": {
-      "nome": "Lucas",
-      "CPF": "123415",
-      "idade": 24,
-      "telefone": "414578",
+      "nome": "Orlando",
+      "CPF": "12398756421",
+      "idade": 39,
+      "telefone": "87954628743",
       "históricoMedicoBasico": [
-        "Sem registros"
+        "gripe"
       ]
     },
     "medico": {
-      "crm": "134126-pe",
+      "crm": "328432-pe",
       "disponibilidade": [
         "Terça",
-        "Quinta",
-        "Sexta"
+        "Terça"
       ],
-      "especialidade": "Nova especialidade",
-      "id": "ae5e23ef-aa3f-4249-b8d2-a0f5ed48ccaa",
-      "nome": "Darllan",
-      "email": "darllandaram@gmail.com",
-      "senha": "1878641654",
+      "especialidade": "Neurologia",
+      "id": "786c7b23-3733-4914-a3c6-aa1679c4900e",
+      "nome": "Marcondes",
+      "email": "marcondes@gmail.com",
+      "senha": "marcondes123senha",
       "tipo": "MEDICO"
     },
-    "motivoConsulta": "Ernia",
+    "motivoConsulta": "Sintomas de gripe",
     "horarioConsulta": "Terça",
     "status": true
   },
   {
-    "id": "f291f320-68db-42d8-b047-3bc5a3ec010a",
+    "id": "c4b806bf-ca02-4e2d-b608-deb6783770fa",
     "paciente": {
-      "nome": "pEDRO",
-      "CPF": "121.456.789-32",
-      "idade": 24,
-      "telefone": "414578",
+      "nome": "Orlando",
+      "CPF": "12398756421",
+      "idade": 39,
+      "telefone": "87954628743",
       "históricoMedicoBasico": [
-        "Sem registros"
+        "gripe"
       ]
     },
     "medico": {
-      "crm": "134126-pe",
+      "crm": "435435-pe",
       "disponibilidade": [
-        "Terça",
-        "Quinta",
-        "Sexta"
+        "Quarta"
       ],
-      "especialidade": "Nova especialidade",
-      "id": "ae5e23ef-aa3f-4249-b8d2-a0f5ed48ccaa",
-      "nome": "Darllan",
-      "email": "darllandaram@gmail.com",
-      "senha": "1878641654",
+      "especialidade": "Pediatria",
+      "id": "dac9363b-219d-4f81-8df9-f51e1c4f1a9f",
+      "nome": "bdfrgdg",
+      "email": "bfdbgreshrte@gmail.com,",
+      "senha": "fdsfsdgred",
       "tipo": "MEDICO"
     },
-    "motivoConsulta": "Dente pode",
-    "horarioConsulta": "Sexta",
-    "status": true
-  },
-  {
-    "id": "609b5ad1-58af-4650-8a4d-00ff40531cfe",
-    "paciente": {
-      "nome": "David",
-      "CPF": "131.456.79-29",
-      "idade": 24,
-      "telefone": "414578",
-      "históricoMedicoBasico": [
-        "Sem registros"
-      ]
-    },
-    "medico": {
-      "crm": "34534534-pe",
-      "disponibilidade": [
-        "Segunda"
-      ],
-      "especialidade": "Ortopedia",
-      "id": "f84fc609-00cf-438f-995d-ad0e4fda11b8",
-      "nome": "Pararanum",
-      "email": "fsdbnuhr@gmail.com",
-      "senha": "198479465465",
-      "tipo": "MEDICO"
-    },
-    "motivoConsulta": "fgfdgdfgdgfdg",
-    "horarioConsulta": "Segunda",
-    "status": true
-  },
-  {
-    "id": "50190adb-63b8-43fb-abc4-8d07300b6f4b",
-    "paciente": {
-      "nome": "David",
-      "CPF": "131.456.789-2",
-      "idade": 24,
-      "telefone": "414578",
-      "históricoMedicoBasico": [
-        "Sem registros"
-      ]
-    },
-    "medico": {
-      "crm": "13456-pe",
-      "disponibilidade": [
-        "Terça",
-        "Quarta",
-        "Quinta"
-      ],
-      "especialidade": "Ginecologista",
-      "id": "ae5e23ef-aa3f-4249-b8d2-a0f5ed48ccba",
-      "nome": "Yure",
-      "email": "yure@gmail.com",
-      "senha": "1878641654",
-      "tipo": "MEDICO"
-    },
-    "motivoConsulta": "Teste do contextUser",
-    "horarioConsulta": "Quinta",
+    "motivoConsulta": "Dor de cabeça e febre",
+    "horarioConsulta": "Quarta",
     "status": true
   }
 ]

@@ -2,8 +2,7 @@ package com.mycompany.controllers;
 
 import com.google.gson.reflect.TypeToken;
 import com.mycompany.models.ConsultaModel;
-import com.mycompany.models.MedicoModel;
-import com.mycompany.models.PacienteModel;
+import java.util.stream.Collectors;
 import com.mycompany.persistence.JSONManager;
 import java.util.List;
 import java.util.UUID;
@@ -81,31 +80,6 @@ public class ConsultaController {
         System.out.println("ERRO: Consulta não encontrada");
 
     }
-//
-//    public void removerConsulta(String idUser, String idConsulta) {
-//        if (!adminController.isAdmin(idUser)) {
-//            System.out.println("❌ ERRO: Apenas administradores podem remover consultas!");
-//            return;
-//        }
-//        consultas.removeIf(a -> a.getId().equals(idConsulta));
-//        salvarDados();
-//    }
-
-//    public void removerConsulta(String idUser, UUID idConsulta) {
-//        if (!adminController.isAdmin(idUser)) {
-//            System.out.println("❌ ERRO: Apenas administradores podem remover consultas!");
-//            return;
-//        }
-//
-//        boolean removed = consultas.removeIf(a -> a.getId().equals(idConsulta));
-//        if (removed) {
-//            System.out.println("✅ Consulta removida com sucesso!");
-//        } else {
-//            System.out.println("⚠️ Nenhuma consulta encontrada com o ID: " + idConsulta);
-//        }
-//
-//        salvarDados();
-//    }
     public void removerConsulta(String idUser, UUID idConsulta) {
         if (!adminController.isAdmin(idUser)) {
             System.out.println("❌ ERRO: Apenas administradores podem remover consultas!");
@@ -134,5 +108,10 @@ public class ConsultaController {
     public List<ConsultaModel> listarConsultas() {
         return consultas;
     }
+    public List<ConsultaModel> listarConsultas(String crm) {
+    return consultas.stream()
+        .filter(a -> a.getMedico().getCrm().equals(crm)) // Filtra consultas pelo CRM
+        .collect(Collectors.toList()); // Retorna uma lista de consultas filtradas
+}
 
 }
